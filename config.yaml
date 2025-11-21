@@ -1,0 +1,87 @@
+# 默认项：guard / baseline / 列填充值 / regime 等可在此覆盖
+
+QLIB_DATA_PATH: "/home/pu/.qlib/qlib_data/all_fund_data/"
+OUTPUT_BASE_PATH: "temp"
+MERGED_CSV: "weights_merged.csv"
+FILTERED_CSV: "weights_filtered.csv"
+
+start_date: "2025-01-01"
+end_date: "2025-05-01"
+WARMUP_START_DATE: "2022-12-01"
+WINDOW_LOOKBACK: 60
+
+MANUAL_DROP_CODES:
+  - "sh517180"
+  - "sh512190"
+
+#牛市
+BASELINE_MIX_ALPHA: 0.75
+#熊市
+# BASELINE_MIX_ALPHA: 0.30      # was 0.75
+
+FINAL_MIN_WEIGHT: 0.05
+MIN_WEIGHT_THRESHOLD: 0.015
+
+#牛市
+SPEARMAN_GUARD_WINDOW: 5
+#熊市
+# SPEARMAN_GUARD_WINDOW: 3
+
+#牛市
+SPEARMAN_GUARD_THRESHOLD: -0.05
+#熊市
+# SPEARMAN_GUARD_THRESHOLD: -0.02
+
+#牛市
+GUARD_RANGE_THRESHOLD: 1.01
+#熊市
+# GUARD_RANGE_THRESHOLD: 0.90
+
+GUARD_DEFAULTS:
+  spearman_guard_avg: null
+  spearman_guard_trigger: false
+  spearman_guard_scale: null
+  spearman_realized: null
+  spearman_pos_boost: false
+  spearman_pos_scale: null
+  defensive_overlay: false
+  defensive_blend: null
+  defensive_severity: 0.0
+  range_overheat: false
+  range_ratio_top: null
+  money_outflow: false
+  money_avg_top: null
+  money_neg_ratio_top: null
+  range_cap_applied: null
+
+COLUMN_FILL_DEFAULTS:
+  open: 0
+  high: 0
+  low: 0
+  close: 0
+  volume: 0
+  w: 0
+
+BASELINE_DEFENSIVE_OVERLAY_DEFAULT: false
+BASELINE_DEFENSIVE_BLEND_DEFAULT: null
+BASELINE_DEFENSIVE_SEVERITY_DEFAULT: 0.0
+
+REGIME_SIGNAL_DEFAULT: null
+
+# 可选：防御策略相关默认值（如需覆盖可直接修改）
+DEFENSIVE_REGIME_THRESHOLD: -0.60
+DEFENSIVE_REGIME_FLOOR: -0.90
+
+#牛市
+DEFENSIVE_BLEND_MIN: 0.00
+DEFENSIVE_BLEND_MAX: 0.10
+DEFENSIVE_BLEND: 0.05
+DEFENSIVE_ALPHA_DAMP: 0.00
+DEFENSIVE_ALPHA_FLOOR: 0.00
+
+#熊市
+# DEFENSIVE_BLEND_MIN: 0.20     # was 0.00
+# DEFENSIVE_BLEND_MAX: 0.80     # was 0.10
+# DEFENSIVE_BLEND: 0.30         # was 0.05
+# DEFENSIVE_ALPHA_DAMP: 0.50    # was 0.00
+# DEFENSIVE_ALPHA_FLOOR: 0.00    # was 0.00
